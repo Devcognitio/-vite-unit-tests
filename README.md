@@ -1,1 +1,1 @@
-# -vite-unit-tests
+# vite-unit-tests
