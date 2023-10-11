@@ -1,9 +1,10 @@
-import { saveBalance } from "./common.service";
+import { getBalance, saveBalance } from "./common.service";
 
 
 export class BankAccount {
-  constructor(private balance = 0) {
+  constructor(private  balance = 0) {
     this.balance = balance;
+
   }
 
   async loadBalance() {
@@ -28,7 +29,7 @@ export class BankAccount {
     }
   }
 
-  getBalance() {
-    return this.balance;
+  async getBalance() {
+    return await getBalance();
   }
 }
