@@ -1,15 +1,14 @@
-// MyComponent.js
-
 import React, { useState, useEffect } from 'react';
+import { useApi } from './useApi.hook';
 
-function MyComponent() {
+export const  MyComponent = () =>  {
   const [data, setData] = useState(null);
-
+  const {fetchData}  = useApi();
   useEffect(() => {
-    fetch('https://api.example.com/data')
-      .then((response) => response.json())
-      .then((result) => setData(result))
-      .catch((error) => console.error('Fetch error:', error));
+    const fetchInit = async ()=> {
+        setData(await fetchData());
+    };
+    fetchInit();
   }, []);
 
   return (
