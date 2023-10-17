@@ -15,7 +15,6 @@ function BookDetails() {
       ...book,
       [event?.target?.name]: event?.target?.value,
     });
-    console.log('estoy', event.target.name, event.target.value);
     event?.preventDefault()
 
   };
@@ -39,6 +38,7 @@ function BookDetails() {
         />
         Title
         <input
+          data-testid="asdfasdf"
           type="text"
           name="title"
           role="inputTitle"
