@@ -1,26 +1,52 @@
-import React from 'react';
-import { useBookDetails } from './useBookDetails';
+import React, { useState } from "react";
+import { useBookDetails } from "./useBookDetails";
 
 function BookDetails() {
-  const { book, updateRating } = useBookDetails();
+  const [book, setBook] = useState({
+    title: "",
+    rating: 0,
+  });
 
-  const handleRatingChange = (event: any) => {
-    updateRating(parseInt(event?.target?.value, 10));
+  const { sendBook } = useBookDetails();
+
+  const handleChange = (event: any) => {
+
+    setBook({
+      ...book,
+      [event?.target?.name]: event?.target?.value,
+    });
+    console.log('estoy', event.target.name, event.target.value);
+    event?.preventDefault()
+
+  };
+
+  const handleSubmit = () => {
+    sendBook(book);
   };
 
   return (
     <div>
-      <h2>{book.title}</h2>
-      <p>Author: {book.author}</p>
+      <h2>title: {book.title}</h2>
       <p>Rating: {book.rating}</p>
       <label>
         Rate this book:
         <input
           type="number"
+          name="rating"
+          role="inputRating"
           value={book.rating}
-          onChange={handleRatingChange}
+          onChange={handleChange}
+        />
+        Title
+        <input
+          type="text"
+          name="title"
+          role="inputTitle"
+          value={book.title}
+          onChange={handleChange}
         />
       </label>
+      <button onClick={handleSubmit}>Send Rating</button>
     </div>
   );
 }
