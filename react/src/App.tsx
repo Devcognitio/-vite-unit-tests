@@ -8,6 +8,7 @@ function App() {
 
   return (
     <>
+    <ReduxWrapper>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -15,6 +16,7 @@ function App() {
         <p>
         </p>
       </div>
+      </ReduxWrapper>
     </>
   )
 }

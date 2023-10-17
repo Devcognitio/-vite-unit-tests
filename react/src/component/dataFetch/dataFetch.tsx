@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useApi } from './useApi.hook';
 
 export const  MyComponent = () =>  {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
   const {fetchData}  = useApi();
   useEffect(() => {
     const fetchInit = async ()=> {
