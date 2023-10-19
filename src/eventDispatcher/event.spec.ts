@@ -1,5 +1,5 @@
 import  {describe, beforeEach, it, expect} from 'vitest';
-import { EventDispatcher } from './event2';
+import { EventDispatcher } from './eventDispatcher';
 
 describe('EventDispatcher', () => {
 
@@ -10,7 +10,7 @@ describe('EventDispatcher', () => {
   })
 
   it('Should mixin Dispatcher methods on given object', () => {
-    EventDispatcher.mixin(testObj) as Function;
+    EventDispatcher.mixin(testObj);
 
     expect(typeof testObj.addEventListener).toBe('function');
     expect(typeof testObj.dispatchEvent).toBe('function');
@@ -23,11 +23,15 @@ describe('EventDispatcher', () => {
     const testFunction = function () {
       console.log('a test function');
     };
+
+
     EventDispatcher.mixin(testObj);
     testObj.addEventListener('test', testFunction);
 
     expect(testObj.hasListenerFor('test')).toBeTruthy();
     expect(testObj.hasCallbackFor('test', testFunction)).toBeTruthy();
+
+
   });
 
   it('Should allow multiple event listeners to be added for one event', () => {
