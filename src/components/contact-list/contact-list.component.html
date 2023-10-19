@@ -1,0 +1,18 @@
+<h1>Contact List</h1>
+
+<div>
+  <form [formGroup]="contactForm">
+    <input type="text" formControlName="name" placeholder="Name" />
+    <input type="email" formControlName="email" placeholder="Email" />
+    <button (click)="addContact()">Add</button>
+  </form>
+</div>
+
+<ul>
+  <li *ngFor="let contact of contacts; let i = index">
+    {{ contact.name }} - {{ contact.email }}
+    <button (click)="deleteContact(i)">Delete</button>
+  </li>
+</ul>
+
+<button (click)="saveContacts()">Save Contacts</button>
